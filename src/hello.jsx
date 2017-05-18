@@ -4,15 +4,28 @@ import './hello.css';
 class Hello extends Component {
   constructor(props) {
     super(props);
+    //console.log(props)
     this.state = {
-      text: '点击试试'
+      text: props.date.toLocaleTimeString()
     };
   }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.setState({
+        text:new Date().toLocaleTimeString()
+      }),
+      1000
+    );
+  } 
+
   handleClick(e){
     var date = new Date();
-    this.setState({
-      text:date.toLocaleTimeString()
-    })
+    this.setState((prevState)=>(
+      {
+        text:'clicked'
+      }
+    ))
   }
   render() {
     return (
