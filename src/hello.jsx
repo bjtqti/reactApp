@@ -27,12 +27,23 @@ class Hello extends Component {
       }
     ))
   }
+  renderList(){
+    const list = ['A','B','C','D'];
+    var items = list.map((item,i)=>
+        <li key={item}>{item}</li>
+    );
+ 
+    return (
+      <ul>{items}</ul>
+    )
+  }
   render() {
     return (
         <div>
           <h1>Hello, world!</h1>
           <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
           <h3 onClick={this.handleClick.bind(this)}>{this.state.text}</h3>
+          {this.renderList()}
         </div>
     );
   }
