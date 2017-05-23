@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import store from './redux.jsx';
+import {addTodo} from './actions.jsx';
 import './hello.css';
 
-class Hello extends Component {
+class Hello extends React.Component {
   constructor(props) {
     super(props);
     //console.log(props)
@@ -20,6 +22,8 @@ class Hello extends Component {
   } 
 
   handleClick(e){
+    store.dispatch(addTodo())
+    // 1
     var date = new Date();
     this.setState((prevState)=>(
       {
